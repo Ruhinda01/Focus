@@ -1,12 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
 
-function Sidebar() {
+function Sidebar({ openModal }) {
     return (
         <aside className="sidebar">
             <nav className="sidebar-nav">
                 <ul>
+                    <li>
+                        <button onClick={openModal}>
+                            Add Task
+                        </button>
+                    </li>
                     <li>
                         <NavLink to="/today" activeClassName="active">
                         Today
@@ -31,6 +37,10 @@ function Sidebar() {
             </nav>
         </aside>
     );
+};
+
+Sidebar.propTypes = {
+    openModal: PropTypes.func
 };
 
 export default Sidebar;
