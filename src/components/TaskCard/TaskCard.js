@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import TaskModal from "../TaskModal/TaskModal";
 
 
-const TaskCard = ({ task, editTask, deleteTask }) => {
+const TaskCard = ({ task, editTask, deleteTask, completeTask, skipTask }) => {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const formattedDate = new Date(task.dueDate).toLocaleDateString();
     const handleEditClick = () => {
@@ -23,6 +23,8 @@ const TaskCard = ({ task, editTask, deleteTask }) => {
             <p>{task.description}</p>
             <button onClick={handleEditClick}>Edit</button>
             <button onClick={() => deleteTask(task.id)}>Delete</button>
+            <button onClick={() => completeTask(task.id)}>Complete</button>
+            <button onClick={() => skipTask(task.id)}>Skip</button>
             {isEditModalOpen && (
                 <TaskModal
                     task={task}
@@ -37,7 +39,9 @@ const TaskCard = ({ task, editTask, deleteTask }) => {
 TaskCard.propTypes = {
     task: PropTypes.object.isRequired,
     editTask: PropTypes.func.isRequired,
-    deleteTask: PropTypes.func.isRequired
+    deleteTask: PropTypes.func.isRequired,
+    completeTask: PropTypes.func.isRequired,
+    skipTask: PropTypes.func.isRequired
 };
 
 export default TaskCard;

@@ -24,6 +24,7 @@ const TaskModal = ({ onClose, onAddTask, task }) => {
             description,
             priority,
             dueDate: new Date(dueDate),
+            status: task?.status || "pending",
         }
         onAddTask(updatedTask);
         onClose();

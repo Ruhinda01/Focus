@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import TaskCard from "../components/TaskCard/TaskCard";
 
-function Today({ tasks, addTask, editTask, deleteTask, openModal }) {
+function Today({ tasks, addTask, editTask, deleteTask, openModal, completeTask, skipTask }) {
     const todayTasks = tasks.filter(task => {
         const taskDate = new Date(task.dueDate);
         const today = new Date();
-        return taskDate.toDateString() === today.toDateString();
+        return taskDate.toDateString() === today.toDateString() && task.status === 'pending';
     });
 
     return (
@@ -20,6 +20,8 @@ function Today({ tasks, addTask, editTask, deleteTask, openModal }) {
                             task={task}
                             editTask={editTask}
                             deleteTask={deleteTask}
+                            completeTask={completeTask}
+                            skipTask={skipTask}
                         />
                     ))
                 ) : (
@@ -38,7 +40,9 @@ Today.propTypes = {
     addTask: PropTypes.func.isRequired,
     editTask: PropTypes.func.isRequired,
     deleteTask: PropTypes.func.isRequired,
-    openModal: PropTypes.func
+    openModal: PropTypes.func,
+    completeTask: PropTypes.func.isRequired,
+    skipTask: PropTypes.func.isRequired
 };
 
 export default Today;
