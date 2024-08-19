@@ -9,7 +9,7 @@ function Sidebar({ openModal }) {
             <nav className="sidebar-nav">
                 <ul>
                     <li>
-                        <button onClick={openModal}>
+                        <button onClick={() => openModal()}>
                             Add Task
                         </button>
                     </li>

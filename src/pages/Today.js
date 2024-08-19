@@ -6,7 +6,7 @@ function Today({ tasks, addTask, editTask, deleteTask, openModal, completeTask, 
     const todayTasks = tasks.filter(task => {
         const taskDate = new Date(task.dueDate);
         const today = new Date();
-        return taskDate.toDateString() === today.toDateString() && task.status === 'pending';
+        return taskDate.toDateString() === today.toDateString();
     });
 
     return (
@@ -25,11 +25,9 @@ function Today({ tasks, addTask, editTask, deleteTask, openModal, completeTask, 
                         />
                     ))
                 ) : (
-                    <>
                         <p>No tasks for today.</p>
-                        <button onClick={openModal}>Create Task</button>
-                    </>
                 )}
+                <button onClick={() => openModal()}>Create Task</button>
             </div>
         </div>
     );
