@@ -1,70 +1,119 @@
-# Getting Started with Create React App
+# **FOCUS: A Gamified Task Management Application**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Focus is a feature-rich, gamified platform designed to help users manage their daily tasks efficiently. The application integrates a Pomodoro timer, drag and drop task prioritzation and health and experience tracking to make task management engaging and productive.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+* User Authentication: Sign up and sign in to your personal task manager.
+* Task Management: Add, edit, delete, complete and skip tasks.
+* Focus Mode: Enter a distraction-free mode with a Pomodoro timer to focus on your tasks.
+* Gamified Experience: Gain experience points and lose health based on task completion or skipping.
+* Notifications: Recieve categorized notifications for various actions like task completion, task deletion, health loss and more.
+* Drag-and-Drop Prioritization: Organize your tasks based on priority using a drag-and-drop feature.
+* Responsive UI/UX: Minimalistic and gamified design inspired by the games 'Threes!' and 'Football Manager 2024', built with Tailwind CSS.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Front-end: React.js, Tailwind CSS
+* Routing: React Router
+* State Management: React Hooks
+* Authentication: Firebase Google, Custom Auth Context
+* Notifications: Custom Notification Context
+* Persistence: LocalStorage for task management
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisities
 
-### `npm run build`
+* Node.js and npm (Node Package Manager) should be installed on your machine.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+git clone https://github.com/Ruhinda01/Focus.git
+cd focus
+```
 
-### `npm run eject`
+2. Install the dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Start the development server
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This will start the application on `http://localhost:3000`.
 
-## Learn More
+### Folder Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* `/completed`: Contains reusable components like `Header`, `Sidebar`, `TaskModal`, etc.
+* `/pages`: Contains page components like `Today`, `Completed`, `Skipped`, `Upcoming`, `Focus` etc.
+* `/Auth`: Contains authentication components like `SignUp`, `SignIn` and the `AuthContext`.
+* `/Notifications`: Contains the notification system and context.
+* `/ProtectedRoute.js`: A higher-order to protect routes that require authentication.
+* `/App.js`: The main component that renders the application's layout and routes.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Key Components
 
-### Code Splitting
+* `App.js`: The root component that sets up the application's layout, routes and state management.
+* `TaskModal.js`: A modal component for adding or editing tasks.
+* `Focus.js`: A dedicated page for focusing on a single task with a Pomodoro timer.
+* `Sidebar.js`: A sidebar for easy navigation between different sections of the application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Routing
 
-### Analyzing the Bundle Size
+The application uses React Router to manage routes:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* `/signup`: User registration page.
+* `/signin`: User login page
+* `/today`: View and manage today's tasks.
+* `/completed`: View and manage today's tasks.
+* `/skipped`: View and manage skipped tasks
+* `/upcoming`: View and manage upcoming tasks.
+* `/focus`: Enter focus mode for a single task.
+* `/*`: Catch-all route for handling 404 (Not Found) errors.
 
-### Making a Progressive Web App
+### Task Management
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* Add Task: Use the modal to add a new task with a title, description, due date and priority.
+* Edit Task: Modify existing tasks via the same modal.
+* Delete Task: Remove tasks from the list with corresponding notifications.
+* Complete Task: Mark tasks as completed, gain experience points and recieve notifications.
+* Skip Task: Skip tasks, lose health points and recieve notifications.
+* Respawn Tasks: Re-do tasks, gain health points if task is respawned from skipped section and recieve notifications.
+* Task Status:
+  * Pending: Tasks due today
+  * Upcoming: Tasks with future due date.
+  * Completed: Tasks that have been completed.
+  * Skipped: Tasks that have been skipped.
 
-### Advanced Configuration
+### Notifications
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The application provides notifications categorized into info, warning and failure. Notifications are displayed for actions like task addition, task completion, task skipping, health loss and experience gain.
 
-### Deployment
+### Customization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* UI/UX: Customize the look and feel using Tailwind CSS. The app is designed with a minimalist aesthetic inpsired by the games "Threes!" and "Football Manager".
+* Task Management Logic: Easily modify task management logic in `App.js` to suit your needs.
 
-### `npm run build` fails to minify
+### Known Issues
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Upcoming page: There is an issue with the responsiveness of the page in the mobile view.
+* Drag-and-Drop Feature: This functionality may have issue due to the Tailwind CSS styling.
+* Persistent Bugs: Some bugs may persist, and the code requires careful testing and debugging.
+
+## Contributing
+
+If you'd like to contribute to this project, please fork the repository, create a new branch and submit a pull request. Contributions are welcome!
+
+## License
+
+This project is licensed under the MIT License.
