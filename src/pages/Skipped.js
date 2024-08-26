@@ -5,9 +5,11 @@ import TaskCard from "../components/TaskCard/TaskCard";
 
 function Skipped({ tasks, pendingTask, deleteTask }) {
     return (
-        <div className="skipped-tasks">
-            <h2>Skipped Tasks</h2>
-            <div className="task-list">
+        <div className="p-6 bg-gray-100 min-h-screen">
+            <div className="header flex justify-start items-center mb-6">
+                <h2 className="text-2xl font-bold text-gray-800">Skipped</h2>
+            </div>
+            <div className="grid grid-cols-1 gap-4">
                 {tasks.length > 0 ? (
                     tasks.map(task => (
                         <TaskCard
@@ -18,7 +20,7 @@ function Skipped({ tasks, pendingTask, deleteTask }) {
                         />
                     ))
                 ) : (
-                    <p>No skipped tasks.</p>
+                    <p className="text-gray-500">No skipped tasks.</p>
                 )}
             </div>
         </div>

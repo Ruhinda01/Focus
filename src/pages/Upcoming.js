@@ -3,9 +3,10 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import PropTypes from "prop-types";
 import TaskModal from "../components/TaskModal/TaskModal";
+import TaskCard from "../components/TaskCard/TaskCard";
 
 
-const Upcoming = ({ tasks, addTask, editTask }) => {
+const Upcoming = ({ tasks, addTask, editTask, deleteTask }) => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -19,12 +20,22 @@ const Upcoming = ({ tasks, addTask, editTask }) => {
         setIsModalOpen(false);
         setSelectedDate(null);
     }
+
+    const today = new Date();
+    const upcomingTasks = tasks.filter(task => {
+        const taskDate = new Date(task.dueDate);
+        return taskDate > today;
+    });
+
     return (
-        <div>
-            <h2>Upcoming</h2>
-            <Calendar
-                onClickDay={openModal}
-            />
+        <div className="p-4 md:p-6 bg-gray-100 min-h-screen">
+            <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Upcoming</h2>
+            <div className="calendar mb-4 md:mb-6">
+                <Calendar
+                    onClickDay={openModal}
+                    className="border border-gray-300 rounded-lg shadow-lg bg-white w-full"
+                />
+            </div>
 
             {isModalOpen && (
                 <TaskModal
@@ -38,6 +49,22 @@ const Upcoming = ({ tasks, addTask, editTask }) => {
                     defaultDueDate={selectedDate}
                 />
             )}
+
+            <div className="grid grid-cols-1 gap-4">
+                {upcomingTasks.length > 0 ? (
+                    upcomingTasks.map(task => (
+                        <TaskCard
+                            key={task.id}
+                            task={task}
+                            editTask={editTask}
+                            deleteTask={deleteTask}
+                            hideActions={true}
+                        />
+                    ))
+                ) : (
+                    <p className="text-gray-500">No upcoming tasks.</p>
+                )}
+            </div>
         </div>
     );
 };
@@ -45,7 +72,8 @@ const Upcoming = ({ tasks, addTask, editTask }) => {
 Upcoming.propTypes = {
     tasks: PropTypes.array.isRequired,
     addTask: PropTypes.func.isRequired,
-    editTask: PropTypes.func.isRequired
+    editTask: PropTypes.func.isRequired,
+    deleteTask: PropTypes.func.isRequired
 };
 
 export default Upcoming;

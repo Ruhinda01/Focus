@@ -49,49 +49,66 @@ const TaskModal = ({ onClose, onAddTask, onEditTask, task, existingTasks, defaul
     }
 
     return (
-        <div className="modal">
-            <div className="modal-content">
-                <form onSubmit={handleSubmit}>
-                    <h2>{task ? "Edit Task" : "Add Task"}</h2>
-                    <label>
-                        Title:
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 p-4 sm:p-6 md:p-8 lg:p-10">
+            <div className="bg-gray-800 text-white rounded-lg shadow-lg p-4 w-full max-w-lg sm:max-w-md">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <h2 className="text-xl sm:text-2xl font-bold">{task ? "Edit Task" : "Add Task"}</h2>
+                    <label className="block">
+                        <span className="text-gray-300">Title:</span>
                         <input
                             type="text"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             required
+                            className="mt-1 block w-full rounded-md border-gray-600 bg-gray-700 text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2"
                         />
                     </label>
-                    <label>
-                        Description:
+                    <label className="block">
+                        <span className="text-gray-300">Description:</span>
                         <textarea
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             required
+                            className="mt-1 block w-full rounded-md border-gray-600 bg-gray-700 text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2"
                         />
                     </label>
-                    <label>
-                        Priority:
+                    <label className="block">
+                        <span className="text-gray-300">Priority:</span>
                         <select
                             value={priority}
                             onChange={(e) => setPriority(e.target.value)}
+                            className="mt-1 block w-full rounded-md border-gray-600 bg-gray-700 text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2"
                         >
                             <option value="urgent">Urgent</option>
                             <option value="medium">Medium</option>
                             <option value="low">Low</option>
                         </select>
                     </label>
-                    <label>
-                        Due Date:
+                    <label className="block">
+                        <span className="text-gray-300">Due Date:</span>
                         <input
                             type="date"
                             value={dueDate}
                             onChange={(e) => setDueDate(e.target.value)}
                             required
+                            className="mt-1 block w-full rounded-md border-gray-600 bg-gray-700 text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2"
                         />
                     </label>
-                    <button type="submit">{task ? "Save Changes" : "Add Task"}</button>
-                    <button type="button" onClick={onClose}>Cancel</button>
+                    <div className="flex flex-col sm:flex-row justify-end sm:space-x-4 space-y-2 sm:space-y-0">
+                        <button
+                            type="submit"
+                            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
+                        >
+                            {task ? "Save Changes" : "Add Task"}
+                        </button>
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
