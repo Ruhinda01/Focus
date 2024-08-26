@@ -28,12 +28,12 @@ const Upcoming = ({ tasks, addTask, editTask, deleteTask }) => {
     });
 
     return (
-        <div className="p-4 md:p-6 bg-gray-100 min-h-screen">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Upcoming</h2>
-            <div className="calendar mb-4 md:mb-6">
+        <div className="p-4 sm:p-6 md:p-8 bg-gray-100 min-h-screen">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4 sm:mb-6">Upcoming</h2>
+            <div className="calendar mb-4 sm:mb-6 md:mb-8">
                 <Calendar
                     onClickDay={openModal}
-                    className="border border-gray-300 rounded-lg shadow-lg bg-white w-full"
+                    className="border border-gray-300 rounded-lg shadow-lg bg-white w-full max-w-md mx-auto"
                 />
             </div>
 
@@ -50,7 +50,7 @@ const Upcoming = ({ tasks, addTask, editTask, deleteTask }) => {
                 />
             )}
 
-            <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 gap-2 sm:gap-4 md:gap-6">
                 {upcomingTasks.length > 0 ? (
                     upcomingTasks.map(task => (
                         <TaskCard
