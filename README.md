@@ -1,5 +1,9 @@
 # **FOCUS: A Gamified Task Management Application**
 
+## Team:
+
+This project was a solo-built project by Ruhinda Roderick Izooba.
+
 ## Overview
 
 Focus is a feature-rich, gamified platform designed to help users manage their daily tasks efficiently. The application integrates a Pomodoro timer, drag and drop task prioritzation and health and experience tracking to make task management engaging and productive.
