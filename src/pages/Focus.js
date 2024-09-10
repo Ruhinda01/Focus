@@ -39,7 +39,7 @@ const Focus = ({ task, completeTask, skipTask, deleteTask, upcomingTask }) => {
 
     if (!task) {
         return (
-            <div className="h-screen flex items-center justify-center">
+            <div className="h-screen flex items-center justify-center bg-gray-900">
                 <p className="text-white text-3xl">No task to focus on.</p>
             </div>
         );
