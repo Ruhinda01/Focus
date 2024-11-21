@@ -97,7 +97,7 @@ const LandingPage = () => {
                         Get notified when you reach your goals.
                     </li>
                     <li className="text-lg">
-                        Check out Focus Deep work application. <a href="https://focus-deep.vercel.app/">FOCUS-DEEP</a>
+                        Check out Focus Deep work application. <a href="https://focus-deep.vercel.app/" className="text-blue-500 hover:underline font-bold">FOCUS-DEEP</a>
                     </li>
                 </ol>
             </section>
